@@ -15,67 +15,67 @@ public class Posts_Chapter07 {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		//ƒ†[ƒU[ƒŠƒXƒg
+		//ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒªã‚¹ãƒˆ
 		String[][] postList = {
-				{ "1003" , "2023-02-08" , "ğ“ú‚Ì–é‚Í“O–é‚Å‚µ‚½EE" , "13" },
-				{ "1002" , "2023-02-08" , "‚¨”æ‚ê—l‚Å‚·I" , "12" },
-				{ "1003" , "2023-02-09" , "¡“ú‚àŠæ’£‚è‚Ü‚·I" , "18" },
-				{ "1001" , "2023-02-09" , "–³—‚Í‹Ö•¨‚Å‚·‚æI" , "17" },
-				{ "1002" , "2023-02-10" , "–¾“ú‚©‚ç˜A‹x‚Å‚·‚ËI" , "20" }
+				{ "1003" , "2023-02-08" , "æ˜¨æ—¥ã®å¤œã¯å¾¹å¤œã§ã—ãŸãƒ»ãƒ»" , "13" },
+				{ "1002" , "2023-02-08" , "ãŠç–²ã‚Œæ§˜ã§ã™ï¼" , "12" },
+				{ "1003" , "2023-02-09" , "ä»Šæ—¥ã‚‚é ‘å¼µã‚Šã¾ã™ï¼" , "18" },
+				{ "1001" , "2023-02-09" , "ç„¡ç†ã¯ç¦ç‰©ã§ã™ã‚ˆï¼" , "17" },
+				{ "1002" , "2023-02-10" , "æ˜æ—¥ã‹ã‚‰é€£ä¼‘ã§ã™ã­ï¼" , "20" }
 		};
 		
 		try {
-			// ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±
+			// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶š
 			con = DriverManager.getConnection(
 				"jdbc:mysql://localhost/challenge_java",
 				"root",
 				"****"
 			);
-			System.out.println("ƒf[ƒ^ƒx[ƒXÚ‘±¬Œ÷");
+			System.out.println("ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶šæˆåŠŸï¼š" + con);
 			
-			// “Šeƒf[ƒ^‚ğ€”õ
+			// æŠ•ç¨¿ãƒ‡ãƒ¼ã‚¿ã‚’æº–å‚™
 			String sql = "INSERT INTO posts (user_id, posted_at, post_content, likes) VALUES (?, ?, ?, ?);";
 			statement = con.prepareStatement(sql);
 
-			System.out.println("ƒŒƒR[ƒh’Ç‰Á‚ğÀs‚µ‚Ü‚·");
+			System.out.println("ãƒ¬ã‚³ãƒ¼ãƒ‰è¿½åŠ ã‚’å®Ÿè¡Œã—ã¾ã™");
 			
-			// “Šeƒf[ƒ^‚ğ’Ç‰Á
+			// æŠ•ç¨¿ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ 
 			int rowCnt = 0;
 			for(int i = 0; i < postList.length; i++) {
-				// SQLƒNƒGƒŠ‚Ì?‚ğƒŠƒXƒg‚Ìƒf[ƒ^‚É’u‚«Š·‚¦
-				statement.setString(1, postList[i][0]); //ƒ†[ƒU[ID
-				statement.setString(2, postList[i][1]); //“Še“ú
-				statement.setString(3, postList[i][2]); //“Še“à—e
-				statement.setString(4, postList[i][3]); //‚¢‚¢‚Ë”
+				// SQLã‚¯ã‚¨ãƒªã®?ã‚’ãƒªã‚¹ãƒˆã®ãƒ‡ãƒ¼ã‚¿ã«ç½®ãæ›ãˆ
+				statement.setString(1, postList[i][0]); //ãƒ¦ãƒ¼ã‚¶ãƒ¼ID
+				statement.setString(2, postList[i][1]); //æŠ•ç¨¿æ—¥æ™‚
+				statement.setString(3, postList[i][2]); //æŠ•ç¨¿å†…å®¹
+				statement.setString(4, postList[i][3]); //ã„ã„ã­æ•°
 
-				// SQLƒNƒGƒŠ‚ğÀsiDBMS‚É‘—Mj
+				// SQLã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œï¼ˆDBMSã«é€ä¿¡ï¼‰
 				rowCnt += statement.executeUpdate();
 			}
-			System.out.println( rowCnt + "Œ‚ÌƒŒƒR[ƒh‚ª’Ç‰Á‚³‚ê‚Ü‚µ‚½");
+			System.out.println( rowCnt + "ä»¶ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ");
 			
 			
-			// “Šeƒf[ƒ^‚ğŒŸõ
+			// æŠ•ç¨¿ãƒ‡ãƒ¼ã‚¿ã‚’æ¤œç´¢
 			Statement secStatement = null;
 			secStatement = con.createStatement();
 			sql = "SELECT posted_at, post_content, likes FROM posts WHERE user_id = 1002;";
 			
-			// SQLƒNƒGƒŠ‚ğÀsiDBMS‚É‘—Mj
+			// SQLã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œï¼ˆDBMSã«é€ä¿¡ï¼‰
 			ResultSet result = secStatement.executeQuery(sql);
 			
-			// SQLƒNƒGƒŠ‚ÌÀsŒ‹‰Ê‚ğ’Šo
-			System.out.println("ƒ†[ƒU[ID‚ª1002‚ÌƒŒƒR[ƒh‚ğŒŸõ‚µ‚Ü‚µ‚½");
+			// SQLã‚¯ã‚¨ãƒªã®å®Ÿè¡Œçµæœã‚’æŠ½å‡º
+			System.out.println("ãƒ¦ãƒ¼ã‚¶ãƒ¼IDãŒ1002ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã—ã¾ã—ãŸ");
 			while(result.next()) {
 				Date posted_at = result.getDate("posted_at");
 				String post_content = result.getString("post_content");
 				int likes = result.getInt("likes");
 				System.out.println(result.getRow()
-									+ "Œ–ÚF“Še“ú" + posted_at
-									+ "^“Še“à—e" + post_content
-									+ "^‚¢‚¢‚Ë”" + likes);
+									+ "ä»¶ç›®ï¼šæŠ•ç¨¿æ—¥æ™‚ï¼" + posted_at
+									+ "ï¼æŠ•ç¨¿å†…å®¹ï¼" + post_content
+									+ "ï¼ã„ã„ã­æ•°ï¼" + likes);
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("ƒGƒ‰[”­¶F" + e.getMessage());
+			System.out.println("ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿï¼š" + e.getMessage());
 		} finally {
 			if ( statement != null ) {
 				try { statement.close(); } catch (SQLException ignore) {}
