@@ -13,16 +13,16 @@ public class Employees_Chapter04 {
 		Statement statement = null;
 		
 		try {
-			// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶š
+			// ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±
 			con = DriverManager.getConnection(
 				"jdbc:mysql://localhost/challenge_java",
 				"root",
 				"****"
 			);
 			
-			System.out.println("ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶šæˆåŠŸï¼š" + con);
+			System.out.println("ƒf[ƒ^ƒx[ƒXÚ‘±¬Œ÷F" + con);
 			
-			// SQLã‚¯ã‚¨ãƒªã‚’æº–å‚™
+			// SQLƒNƒGƒŠ‚ğ€”õ
 			statement = con.createStatement();
 			String sql = """
 					CREATE TABLE employees (
@@ -34,12 +34,12 @@ public class Employees_Chapter04 {
 					);
 					""";
 			
-			// SQLã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œ
+			// SQLƒNƒGƒŠ‚ğÀs
 			int rowCnt = statement.executeUpdate(sql);
-			System.out.println("ç¤¾å“¡ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ã¾ã—ãŸï¼šæ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°=" + rowCnt );
+			System.out.println("Ğˆõƒe[ƒuƒ‹‚ğì¬‚µ‚Ü‚µ‚½FXVƒŒƒR[ƒh”=" + rowCnt );
 			
 		} catch (SQLException e) {
-			System.out.println("ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿï¼š" + e.getMessage());
+			System.out.println("ƒGƒ‰[”­¶F" + e.getMessage());
 		} finally {
 			if ( statement != null ) {
 				try { statement.close(); } catch (SQLException ignore) {}
